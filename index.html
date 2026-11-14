@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light" class="no-js">
+<html lang="pt-BR" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>document.documentElement.className="js";</script>
+<script>document.documentElement.className = "js";</script>
 
 <title>RevolutionBank — Pix vira USDT e o fornecedor recebe em minutos</title>
-<meta name="description" content="Converta real em USDT na rede TRON por Pix. Cotação travada, tarifa mostrada antes de confirmar e comprovante com hash público. Para importadores, e-commerce e indústria que pagam fornecedores no exterior.">
+<meta name="description" content="Converta real em USDT na rede TRON pagando com Pix. Cotação travada, tarifa mostrada antes de confirmar e comprovante com hash público. Para quem paga fornecedores no exterior.">
 <link rel="canonical" href="https://www.revolutionbank.com.br/">
 
 <meta property="og:type" content="website">
@@ -16,13 +16,14 @@
 <meta property="og:description" content="Você manda real por Pix. O fornecedor recebe USDT na rede TRON. Cotação travada, custo informado antes e hash público para conferir.">
 <meta property="og:image" content="https://www.revolutionbank.com.br/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07090d">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 
 <link rel="stylesheet" href="assets/revolutionbank.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23121819'/><path d='M11 23V9h6.2a4.4 4.4 0 0 1 0 8.8H11M17.6 17.8 22 23' fill='none' stroke='%23d8b476' stroke-width='2.2' stroke-linecap='square'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23ff8a4c'/><path d='M11 23V9h6.2a4.4 4.4 0 0 1 0 8.8H11M17.6 17.8 22 23' fill='none' stroke='%23170a03' stroke-width='2.6' stroke-linecap='square'/></svg>">
 
 <script type="application/ld+json">
 {
@@ -36,13 +37,7 @@
   "currenciesAccepted": "BRL",
   "description": "Intermediação de compra de USDT (TRC-20) com pagamento via Pix, para pagamento de fornecedores no exterior.",
   "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
-  "contactPoint": [{
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "telephone": "+55-11-0000-0000",
-    "email": "contato@revolutionbank.com.br",
-    "availableLanguage": "Portuguese"
-  }]
+  "contactPoint": [{ "@type": "ContactPoint", "contactType": "customer support", "telephone": "+55-11-0000-0000", "email": "contato@revolutionbank.com.br", "availableLanguage": "Portuguese" }]
 }
 </script>
 </head>
@@ -50,44 +45,31 @@
 <body>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
-<!-- ============ BARRA DE STATUS ============ -->
-<div class="quickbar" aria-label="Barra de status do site">
-  <div class="quickbar-in">
-    <span><b class="dot-live" aria-hidden="true"></b> página estática · abre em qualquer navegador</span>
-    <span class="sep" aria-hidden="true">/</span>
-    <span class="mode-tag">Pix → USDT · <b>TRC-20</b></span>
-    <button type="button" class="share-btn" id="shareBtn" title="Copiar o endereço desta página">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
-      <span id="shareLabel">copiar link</span>
-    </button>
-  </div>
-</div>
-
 <!-- ============ CABEÇALHO ============ -->
 <header class="masthead">
   <div class="wrap masthead-in">
     <a class="wordmark" href="#topo" aria-label="RevolutionBank, página inicial">
-      <span class="mark" aria-hidden="true"></span>
-      RevolutionBank <small>Pix → USDT</small>
+      <span class="glyph" aria-hidden="true">R</span>
+      RevolutionBank <em>Pix → USDT</em>
     </a>
 
     <nav class="mainnav" id="nav" aria-label="Navegação principal">
       <a href="#como-funciona">Como funciona</a>
-      <a href="#produto">Painel</a>
+      <a href="#painel">Painel</a>
       <a href="#custo">Custo</a>
       <a href="#conformidade">Conformidade</a>
       <a href="#perguntas">Perguntas</a>
     </nav>
 
-    <div class="masthead-tools">
-      <button class="theme-btn" type="button" id="themeBtn" aria-label="Alternar tema claro e escuro" title="Alternar tema">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <div class="tools">
+      <button class="icon-btn" type="button" id="shareBtn" aria-label="Copiar o link desta página" title="Copiar link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
       </button>
-      <button class="nav-toggle" type="button" id="navBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <button class="icon-btn nav-toggle" type="button" id="navBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <a class="btn btn-outline btn-sm" href="#contato">Falar com especialista</a>
-      <a class="btn btn-solid btn-sm" href="#cotacao">Simular</a>
+      <a class="btn btn-ghost btn-sm" href="#contato">Falar com especialista</a>
+      <a class="btn btn-primary btn-sm" href="#simulador">Simular agora</a>
     </div>
   </div>
 </header>
@@ -96,25 +78,24 @@
 
   <!-- ============ ABERTURA ============ -->
   <div class="wrap" id="topo">
-    <section class="opening" aria-labelledby="h-abertura">
+    <section class="opening" aria-labelledby="h1">
       <div>
-        <p class="route">
-          <b>Pix</b> <span class="rail" aria-hidden="true"></span>
-          <b>USDT</b> <span class="rail" aria-hidden="true"></span>
-          <b>TRC-20</b> <span style="margin-left:.4rem">rede TRON</span>
+        <p class="badge">
+          <b>Pix</b> <span class="sep">→</span> USDT
+          <span class="sep">·</span> rede TRON (TRC-20)
         </p>
 
-        <h1 id="h-abertura">A fábrica embarcou. O pagamento <em>não espera</em> o câmbio abrir.</h1>
+        <h1 id="h1">A fábrica embarcou.<br>O pagamento não espera o <span class="accent">câmbio abrir</span>.</h1>
 
         <p class="lede">
-          Você manda real por Pix. A gente converte na cotação que aparece na tela e entrega
-          USDT na carteira do fornecedor depois que o Pix compensa. Sem contrato de câmbio,
-          sem fila de banco, sem surpresa no fechamento.
+          Você manda real por Pix. A gente converte na cotação que está na tela e entrega USDT
+          na carteira do fornecedor depois que o Pix compensa. Sem contrato de câmbio, sem fila
+          de banco, sem surpresa no fechamento.
         </p>
 
         <div class="opening-actions">
-          <a class="btn btn-solid" href="#cotacao">Simular meu pagamento</a>
-          <a class="btn btn-outline" href="#contato">Falar com especialista</a>
+          <a class="btn btn-primary" href="#simulador">Simular meu pagamento</a>
+          <a class="btn btn-ghost" href="#contato">Falar com especialista</a>
         </div>
 
         <ul class="facts">
@@ -125,66 +106,72 @@
       </div>
 
       <!-- SIMULADOR -->
-      <div class="quote-panel" id="cotacao" role="region" aria-labelledby="sim-title">
-        <div class="quote-top">
-          <strong id="sim-title">Simulação</strong>
-          <span class="live" id="liveTag"><i aria-hidden="true"></i> <span>referência de mercado</span></span>
+      <div class="sim" id="simulador" role="region" aria-labelledby="simTitle">
+        <div class="sim-top">
+          <div>
+            <strong id="simTitle">Simulador</strong>
+            <small>referência USDT/BRL · atualiza a cada minuto</small>
+          </div>
+          <span class="live" id="liveTag"><i aria-hidden="true"></i> <span>mercado</span></span>
         </div>
 
         <div class="modes" role="tablist" aria-label="Modo da simulação">
-          <button role="tab" type="button" aria-selected="true" data-mode="brl" id="tab-brl" aria-controls="sim-body">Envio em reais</button>
-          <button role="tab" type="button" aria-selected="false" data-mode="usdt" id="tab-usdt" aria-controls="sim-body" tabindex="-1">Preciso de USDT</button>
+          <button role="tab" type="button" aria-selected="true" data-mode="brl" id="tab-brl" aria-controls="simBody">Envio em reais</button>
+          <button role="tab" type="button" aria-selected="false" data-mode="usdt" id="tab-usdt" aria-controls="simBody" tabindex="-1">Preciso de USDT</button>
         </div>
 
-        <div class="quote-body" id="sim-body" role="tabpanel" aria-labelledby="tab-brl">
-          <label class="field-label" for="valor" id="valorLabel">Você envia, em reais</label>
-          <div class="amount-field">
+        <div class="sim-body" id="simBody" role="tabpanel" aria-labelledby="tab-brl">
+          <div class="amt-label">
+            <label for="valor" id="valorLabel">Você envia, em reais</label>
+            <span id="feeHint">tarifa a definir</span>
+          </div>
+          <div class="amt-field">
             <span class="cur" id="curTag" aria-hidden="true">BRL</span>
             <input id="valor" inputmode="decimal" autocomplete="off" value="50.000,00" aria-describedby="valorHint">
           </div>
-          <p class="micro" id="valorHint" style="margin-top:.32rem">A referência de cotação é atualizada a cada minuto.</p>
+          <p class="micro" id="valorHint" style="margin-top:.4rem">Digite o valor. A referência de cotação é pública e pode variar.</p>
 
           <div class="presets" aria-label="Valores rápidos">
-            <button type="button" data-v="5000">R$ 5 mil</button>
-            <button type="button" data-v="20000">R$ 20 mil</button>
-            <button type="button" data-v="50000">R$ 50 mil</button>
-            <button type="button" data-v="100000">R$ 100 mil</button>
+            <button type="button" data-v="5000">5 mil</button>
+            <button type="button" data-v="20000">20 mil</button>
+            <button type="button" data-v="50000">50 mil</button>
+            <button type="button" data-v="100000">100 mil</button>
           </div>
 
-          <div class="breakdown" aria-live="polite">
-            <div><span>Cotação de referência USDT/BRL</span><b id="rBase">—</b></div>
+          <div class="rows" aria-live="polite">
+            <div><span>Cotação de referência</span><b id="rBase">—</b></div>
             <div><span>Tarifa de intermediação</span><b id="rFee">a definir</b></div>
-            <div><span>Cotação final aplicada</span><b id="rFinal">—</b></div>
+            <div><span>Cotação final</span><b id="rFinal">—</b></div>
             <div><span>Taxa de rede TRON</span><b id="rNet">incluída</b></div>
           </div>
 
-          <div class="outcome">
+          <div class="out">
             <span id="outLabel">Fornecedor recebe</span>
             <strong id="outValue" aria-live="polite">—</strong>
           </div>
 
           <div class="validity">
             <span id="validityText">30s</span>
-            <span class="rail" aria-hidden="true"><i id="validityBar"></i></span>
+            <span class="track" aria-hidden="true"><i id="validityBar"></i></span>
             <span id="stamp">—</span>
           </div>
 
-          <p class="notice" id="limitNotice" role="status" hidden></p>
+          <p class="warn" id="limitNotice" role="status" hidden></p>
 
-          <button class="btn btn-brass btn-block" type="button" id="simGo">Continuar com este valor</button>
+          <button class="btn btn-primary btn-block" type="button" id="simGo">Continuar com este valor</button>
 
-          <p class="micro">
-            Simulação ilustrativa com referência pública de mercado. A cotação que vale é a registrada
-            na confirmação do Pix e no comprovante.
+          <p class="micro" style="margin-top:.85rem">
+            Simulação ilustrativa com referência pública de mercado. Vale a cotação registrada na
+            confirmação do Pix e no comprovante.
           </p>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- ============ CORREDOR DE DESTINOS ============ -->
-  <div class="corridor" aria-label="Destinos de pagamento atendidos">
-    <div class="corridor-track" aria-hidden="true">
+  <!-- ============ DESTINOS ============ -->
+  <div class="ticker" aria-label="Destinos de pagamento atendidos">
+    <div class="ticker-track" aria-hidden="true">
       <span><b>Shenzhen</b> CN</span><span><b>Guangzhou</b> CN</span><span><b>Yiwu</b> CN</span>
       <span><b>Hong Kong</b> HK</span><span><b>Miami</b> US</span><span><b>Nova York</b> US</span>
       <span><b>Cidade do México</b> MX</span><span><b>Buenos Aires</b> AR</span><span><b>Santiago</b> CL</span>
@@ -197,137 +184,125 @@
   </div>
 
   <!-- ============ COMO FUNCIONA ============ -->
-  <section class="band" id="como-funciona" aria-labelledby="h-como">
+  <section class="band" id="como-funciona" aria-labelledby="h2-como">
     <div class="wrap">
       <div class="head center" data-reveal>
-        <p class="label">Como funciona</p>
-        <h2 id="h-como">Três passos. Zero burocracia.</h2>
+        <div>
+          <p class="eyebrow">Como funciona</p>
+          <h2 id="h2-como">Três passos. Nenhuma etapa escondida.</h2>
+        </div>
         <p class="lede">Você faz um Pix. A RevolutionBank converte na cotação da tela. Seu fornecedor recebe USDT na rede TRON, com comprovante para conferir.</p>
       </div>
 
-      <!-- fluxo animado: Pix → hub → USDT (CSS puro) -->
       <div class="flow" data-reveal aria-hidden="true">
-        <span class="line"></span>
+        <span class="track"></span>
         <span class="comet" style="animation-delay:0s"></span>
         <span class="comet" style="animation-delay:-1.33s"></span>
         <span class="comet" style="animation-delay:-2.66s"></span>
-        <span class="node start">PIX</span>
-        <span class="node hub"><i class="ring"></i>RB</span>
-        <span class="node end">USDT</span>
+        <span class="node a">PIX</span>
+        <span class="node b"><i class="ring"></i>RB</span>
+        <span class="node c">USDT</span>
       </div>
-      <p class="micro" style="text-align:center;margin-top:-.4rem;margin-bottom:1.6rem">Fluxo ilustrativo do caminho do pagamento.</p>
 
-      <ol class="steps" style="list-style:none;margin:0;padding:0">
+      <ol class="steps">
         <li class="step" data-reveal>
-          <span class="n">01 / VALOR</span>
+          <span class="k">01 — VALOR</span>
           <h3>Você vê o custo antes de pagar</h3>
-          <p>Informe o valor em reais. A tela mostra cotação de referência, tarifa, cotação final e quanto chega em USDT. Nada aparece depois no extrato.</p>
+          <p>Informe o valor em reais. A tela mostra cotação, tarifa, cotação final e quanto chega em USDT. Nada aparece depois no extrato.</p>
         </li>
-        <li class="step" data-reveal data-reveal-delay="90">
-          <span class="n">02 / PIX</span>
+        <li class="step" data-reveal data-reveal-delay="80">
+          <span class="k">02 — PIX</span>
           <h3>Paga com um Pix comum</h3>
-          <p>Pix da sua conta para uma conta de mesma titularidade. A cotação é travada na confirmação e fica registrada no comprovante.</p>
+          <p>Pix da sua conta para uma conta de mesma titularidade. A cotação é travada na confirmação e fica no comprovante.</p>
         </li>
-        <li class="step" data-reveal data-reveal-delay="180">
-          <span class="n">03 / REDE</span>
-          <h3>O USDT sai para a carteira TRC-20</h3>
-          <p>O envio vai para a carteira cadastrada e validada. Você recebe o hash e o comprovante em PDF para repassar ao fornecedor.</p>
+        <li class="step" data-reveal data-reveal-delay="160">
+          <span class="k">03 — REDE</span>
+          <h3>O USDT sai para a TRC-20</h3>
+          <p>O envio vai para a carteira cadastrada e validada. Você recebe o hash e o comprovante em PDF para o fornecedor.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- ============ PAINEL / EXTRATO ============ -->
-  <section class="band" id="produto" aria-labelledby="h-painel">
+  <!-- ============ PAINEL ============ -->
+  <section class="band" id="painel" aria-labelledby="h2-painel">
     <div class="wrap split">
       <div data-reveal>
-        <p class="label">No painel</p>
-        <h2 id="h-painel">Cada operação com status, hash e recibo.</h2>
-        <p class="lede" style="margin-top:.9rem">
-          Da confirmação do Pix à confirmação na rede TRON. Você não precisa ligar para
-          ninguém para saber onde o pagamento está.
-        </p>
+        <p class="eyebrow">No painel</p>
+        <h2 id="h2-painel">Cada operação com status, hash e recibo.</h2>
+        <p class="lede" style="margin-top:1rem">Da confirmação do Pix à confirmação na rede TRON. Você não precisa ligar para ninguém para saber onde o pagamento está.</p>
 
-        <ul class="feature-list">
-          <li><b>STATUS</b><span>“Pix recebido”, “convertendo”, “enviado”, “confirmado na TRON”.</span></li>
-          <li><b>RECIBO</b><span>PDF da operação com cotação, tarifa e hash da transação.</span></li>
-          <li><b>CARTEIRAS</b><span>Fornecedores recorrentes com endereço validado e envio-teste opcional.</span></li>
-          <li><b>EXTRATO</b><span>Exportação CSV com data, valor, cotação e hash para a contabilidade.</span></li>
+        <ul class="features">
+          <li><span class="n">01</span><div><b>Status em tempo real</b><span>“Pix recebido”, “convertendo”, “enviado”, “confirmado na TRON”.</span></div></li>
+          <li><span class="n">02</span><div><b>Comprovante com hash</b><span>PDF da operação com cotação, tarifa e hash da transação.</span></div></li>
+          <li><span class="n">03</span><div><b>Carteiras salvas</b><span>Fornecedores recorrentes com endereço validado e envio-teste opcional.</span></div></li>
+          <li><span class="n">04</span><div><b>Extrato exportável</b><span>CSV com data, valor, cotação e hash para a contabilidade.</span></div></li>
         </ul>
       </div>
 
       <figure style="margin:0" data-reveal data-reveal-delay="90">
-        <div class="ledger">
-          <div class="ledger-head">
-            <strong>Operações recentes</strong>
+        <div class="panel">
+          <div class="panel-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>app.revolutionbank.com.br</span>
             <span class="tag">demonstração</span>
           </div>
           <div class="balance">
             <small>Saldo disponível</small>
             <strong>R$ 128.450,00</strong>
           </div>
-          <table>
-            <caption>Dados de exemplo. Nenhuma operação real ou cliente é exibido.</caption>
-            <thead>
-              <tr><th scope="col">Operação</th><th scope="col">Rede</th><th scope="col">Status</th><th scope="col">Valor</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="who">Pagamento a fornecedor<small>Shenzhen · TRC-20 · 14/11/2026</small></td>
-                <td class="hash">TRON</td>
-                <td><span class="tag">Confirmado</span></td>
-                <td class="amt out">12.400,00 USDT</td>
-              </tr>
-              <tr>
-                <td class="who">Conversão Pix → USDT<small>tarifa [A DEFINIR] · 14/11/2026</small></td>
-                <td class="hash">TRON</td>
-                <td><span class="tag">Confirmado</span></td>
-                <td class="amt in">+16.279,16 USDT</td>
-              </tr>
-              <tr>
-                <td class="who">Pagamento a fornecedor<small>Miami · TRC-20 · 13/11/2026</small></td>
-                <td class="hash">TRON</td>
-                <td><span class="tag">Confirmado</span></td>
-                <td class="amt out">4.850,00 USDT</td>
-              </tr>
-              <tr>
-                <td class="who">Pix recebido<small>Saldo da conta · 13/11/2026</small></td>
-                <td class="hash">—</td>
-                <td><span class="tag pending">Em análise</span></td>
-                <td class="amt in">+R$ 120.000,00</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="rows-panel">
+            <div class="rowp">
+              <span class="ico" aria-hidden="true">OUT</span>
+              <div class="l"><b>Fornecedor · Shenzhen</b><small>TRC-20 · hash a3f9c0e1…7b2d4c21e</small></div>
+              <div class="r out">−12.400,00 USDT</div>
+            </div>
+            <div class="rowp">
+              <span class="ico" aria-hidden="true">IN</span>
+              <div class="l"><b>Conversão Pix → USDT</b><small>tarifa [A DEFINIR] · 14/11/2026</small></div>
+              <div class="r in">+16.279,16 USDT</div>
+            </div>
+            <div class="rowp">
+              <span class="ico" aria-hidden="true">OUT</span>
+              <div class="l"><b>Fornecedor · Miami</b><small>TRC-20 · 13/11/2026</small></div>
+              <div class="r out">−4.850,00 USDT</div>
+            </div>
+            <div class="rowp">
+              <span class="ico" aria-hidden="true">PIX</span>
+              <div class="l"><b>Pix recebido</b><small>13/11/2026 · em análise cadastral</small></div>
+              <div class="r in">+R$ 120.000,00</div>
+            </div>
+          </div>
         </div>
-        <figcaption class="micro" style="margin-top:.65rem">Layout do painel. Valores, nomes e datas são ilustrativos.</figcaption>
+        <figcaption class="micro" style="margin-top:.7rem">Layout do painel. Valores, nomes e datas são ilustrativos.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ============ PÚBLICOS ============ -->
-  <section class="band" id="publicos" aria-labelledby="h-publicos">
+  <section class="band" id="publicos" aria-labelledby="h2-publicos">
     <div class="wrap">
       <div class="head" data-reveal>
         <div>
-          <p class="label">Para quem é</p>
-          <h2 id="h-publicos">Feita para quem tem alguém para pagar do outro lado do mundo.</h2>
+          <p class="eyebrow">Para quem é</p>
+          <h2 id="h2-publicos">Quem tem alguém para pagar do outro lado do mundo.</h2>
         </div>
         <p class="lede">Não é produto de investimento nem de trading: é meio de pagamento. Entra real, sai USDT na carteira de quem você deve.</p>
       </div>
 
-      <div class="audience" data-reveal>
-        <article>
-          <span class="kicker">Importadores</span>
+      <div class="audience">
+        <article data-reveal>
+          <span class="k">Importadores</span>
           <h3>Pague a fábrica antes do contêiner fechar.</h3>
           <p>Fornecedores em Shenzhen, Guangzhou e Yiwu já pedem USDT. Você envia em real; eles recebem na rede TRON.</p>
         </article>
-        <article>
-          <span class="kicker">E-commerce</span>
+        <article data-reveal data-reveal-delay="80">
+          <span class="k">E-commerce</span>
           <h3>Reponha estoque no ritmo das vendas, não do câmbio.</h3>
           <p>Pedidos pequenos e frequentes, sem taxa fixa que come a margem. Pix de domingo também conta.</p>
         </article>
-        <article>
-          <span class="kicker">Indústria e serviços</span>
+        <article data-reveal data-reveal-delay="160">
+          <span class="k">Indústria e serviços</span>
           <h3>Insumos, peças e software: pague o fornecedor, não o intermediário.</h3>
           <p>Da matéria-prima à licença de software, com extrato pronto para a contabilidade.</p>
         </article>
@@ -336,50 +311,46 @@
   </section>
 
   <!-- ============ CUSTO ============ -->
-  <section class="band" id="custo" aria-labelledby="h-custo">
+  <section class="band" id="custo" aria-labelledby="h2-custo">
     <div class="wrap split rev">
-      <div class="receipt" aria-label="Recibo de exemplo da operação" data-reveal>
+      <div class="receipt" data-reveal aria-label="Recibo de exemplo da operação">
         <h3>Recibo da operação</h3>
         <p class="stamp">EXEMPLO · 14/11/2026 · 19:42 (BRT)</p>
         <dl>
           <div><dt>Você envia (Pix)</dt><dd>R$ 50.000,00</dd></div>
           <div><dt>Cotação de referência</dt><dd>R$ 5,1842</dd></div>
           <div><dt>Tarifa de intermediação</dt><dd>[TAXA A DEFINIR]</dd></div>
-          <div><dt>Cotação final aplicada</dt><dd>R$ 5,2257</dd></div>
+          <div><dt>Cotação final</dt><dd>R$ 5,2257</dd></div>
           <div><dt>Taxa de rede TRON</dt><dd>incluída</dd></div>
           <div><dt>Validade da cotação</dt><dd>30 segundos</dd></div>
           <div><dt>Contraparte</dt><dd>provedor de liquidez</dd></div>
-          <div><dt>Hash da transação</dt><dd>a3f9c0e1…7b2d4c21e</dd></div>
+          <div><dt>Hash</dt><dd>a3f9c0e1…7b2d4c21e</dd></div>
         </dl>
-        <div class="rule" role="presentation"></div>
-        <div class="totals">
+        <div class="div" role="presentation"></div>
+        <div class="total">
           <span>Fornecedor recebe</span>
           <strong>9.568,14 USDT</strong>
         </div>
-        <p class="micro" style="margin-top:.8rem">Recibo ilustrativo. A cotação real e a tarifa vigente são as registradas no comprovante da sua operação.</p>
+        <p class="micro" style="margin-top:.9rem">Recibo ilustrativo. A cotação real e a tarifa vigente são as registradas no comprovante da sua operação.</p>
       </div>
 
       <div data-reveal data-reveal-delay="90">
-        <p class="label">Transparência de preço</p>
-        <h2 id="h-custo">O que você paga está escrito antes.</h2>
-        <p class="lede" style="margin-top:.9rem">
-          Uma tarifa de intermediação sobre a cotação do provedor de liquidez, informada antes da
-          confirmação. Sem mensalidade, sem cadastro pago. A rede TRON entra na cotação final,
-          não como cobrança separada.
-        </p>
+        <p class="eyebrow">Transparência de preço</p>
+        <h2 id="h2-custo">O que você paga está escrito antes.</h2>
+        <p class="lede" style="margin-top:1rem">Uma tarifa de intermediação sobre a cotação do provedor de liquidez, informada antes da confirmação. Sem mensalidade e sem cadastro pago. A rede TRON entra na cotação final, não como cobrança separada.</p>
 
-        <div class="compare" style="margin-top:1.6rem">
+        <div class="cmp scroll-x" style="margin-top:1.7rem">
           <table>
             <caption class="micro" style="text-align:left;padding:.75rem 1rem 0">Comparação qualitativa com base em condições usuais de mercado. Condições de terceiros variam por instituição e perfil.</caption>
             <thead>
-              <tr><th scope="col">Critério</th><th scope="col" class="us">RevolutionBank</th><th scope="col">Câmbio bancário</th><th scope="col">Exchange internacional</th></tr>
+              <tr><th scope="col">Critério</th><th scope="col" class="us">RevolutionBank</th><th scope="col">Câmbio bancário</th><th scope="col">Exchange</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Custo</th><td class="us">Tarifa informada antes de confirmar</td><td>Spread negociado com o gerente</td><td>Spread + saque + taxa de rede</td></tr>
+              <tr><th scope="row">Custo</th><td class="us">Tarifa informada antes</td><td>Spread com o gerente</td><td>Spread + saque + rede</td></tr>
               <tr><th scope="row">Horário</th><td class="us">Pix 24/7</td><td>Janela bancária</td><td>24/7</td></tr>
-              <tr><th scope="row">Comprovante</th><td class="us">Hash público + PDF</td><td>Contrato de câmbio</td><td>Hash, sem documento fiscal</td></tr>
+              <tr><th scope="row">Comprovante</th><td class="us">Hash público + PDF</td><td>Contrato de câmbio</td><td>Hash, sem documento</td></tr>
               <tr><th scope="row">Atendimento</th><td class="us">Humano, em português</td><td>Agência / gerente</td><td>Chat automatizado</td></tr>
-              <tr><th scope="row">Feito para</th><td class="us">Quem paga fornecedor</td><td>Operações corporativas grandes</td><td>Quem opera mercado</td></tr>
+              <tr><th scope="row">Feito para</th><td class="us">Quem paga fornecedor</td><td>Grande corporação</td><td>Quem opera mercado</td></tr>
             </tbody>
           </table>
         </div>
@@ -388,14 +359,14 @@
   </section>
 
   <!-- ============ CONFORMIDADE ============ -->
-  <section class="band" id="conformidade" aria-labelledby="h-conf">
+  <section class="band" id="conformidade" aria-labelledby="h2-conf">
     <div class="wrap">
       <div class="head" data-reveal>
         <div>
-          <p class="label">Conformidade</p>
-          <h2 id="h-conf">Verificação antes do envio, não depois.</h2>
+          <p class="eyebrow">Conformidade</p>
+          <h2 id="h2-conf">Verificação antes do envio, não depois.</h2>
         </div>
-        <p class="lede">Toda operação passa por identificação e análise antes de sair. É o que permite um pagamento rápido sem virar brecha.</p>
+        <p class="lede">Toda operação passa por identificação e análise antes de sair. É o que permite pagamento rápido sem virar brecha.</p>
       </div>
 
       <div class="cols">
@@ -404,14 +375,14 @@
             <div><h4>KYC e KYB</h4><p>Pessoa física e empresa verificadas antes da primeira operação, com checagem biométrica.</p></div>
             <div><h4>PLD/FT</h4><p>Monitoramento conforme a Lei 9.613/1998 e as normas do Banco Central.</p></div>
             <div><h4>Confirmação na rede</h4><p>Hash público da transação TRON em cada envio.</p></div>
-            <div><h4>Conta protegida</h4><p>Autenticação em dois fatores, criptografia e dados tratados conforme a LGPD.</p></div>
+            <div><h4>Conta protegida</h4><p>Autenticação em dois fatores, criptografia e LGPD.</p></div>
           </div>
 
           <ol class="timeline">
-            <li><span class="when">DEZ 2022</span><div><h4>Lei nº 14.478 — marco legal dos ativos virtuais</h4><p>Cria a figura da prestadora de serviços de ativos virtuais e define deveres de governança, segurança da informação e prevenção à lavagem de dinheiro.</p></div></li>
-            <li><span class="when">JUN 2023</span><div><h4>Decreto nº 11.563</h4><p>O Banco Central passa a regular, autorizar e supervisionar as prestadoras de serviços de ativos virtuais.</p></div></li>
-            <li><span class="when">NOV 2025</span><div><h4>Resoluções BCB nº 519, 520 e 521</h4><p>Autorização, constituição e funcionamento e integração ao mercado de câmbio, nas modalidades intermediária, custodiante e corretora.</p></div></li>
-            <li><span class="when">2026</span><div><h4>Divulgações obrigatórias no site e no app</h4><p>Situação da autorização, ativos e redes ofertados, cobertura, tarifas, limites, atendimento e ouvidoria.</p></div></li>
+            <li><span class="w">DEZ 2022</span><div><h4>Lei nº 14.478 — marco legal dos ativos virtuais</h4><p>Cria a prestadora de serviços de ativos virtuais e define deveres de governança, segurança da informação e prevenção à lavagem de dinheiro.</p></div></li>
+            <li><span class="w">JUN 2023</span><div><h4>Decreto nº 11.563</h4><p>O Banco Central passa a regular, autorizar e supervisionar as prestadoras.</p></div></li>
+            <li><span class="w">NOV 2025</span><div><h4>Resoluções BCB nº 519, 520 e 521</h4><p>Autorização, funcionamento e integração ao mercado de câmbio, nas modalidades intermediária, custodiante e corretora.</p></div></li>
+            <li><span class="w">2026</span><div><h4>Divulgações obrigatórias no site e no app</h4><p>Situação da autorização, ativos e redes, cobertura, tarifas, limites, atendimento e ouvidoria.</p></div></li>
           </ol>
         </div>
 
@@ -421,23 +392,23 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
               Situação regulatória — preencher antes de publicar
             </h3>
-            <p>Este bloco existe para receber a situação real da empresa. Protocolo de pedido de autorização não é autorização, e dizer isso com clareza é parte da obrigação.</p>
+            <p>Este bloco existe para receber a situação real da empresa. Protocolo de pedido de autorização não é autorização, e dizer isso com clareza faz parte da obrigação.</p>
             <dl>
               <div><dt>Razão social</dt><dd>[A DEFINIR]</dd></div>
               <div><dt>CNPJ</dt><dd>[A DEFINIR]</dd></div>
-              <div><dt>Modalidade</dt><dd>intermediária de ativos virtuais</dd></div>
+              <div><dt>Modalidade</dt><dd>intermediária</dd></div>
               <div><dt>Protocolo no BCB</dt><dd>[A DEFINIR]</dd></div>
               <div><dt>Regime de operação</dt><dd>[A DEFINIR]</dd></div>
             </dl>
           </div>
 
-          <div class="disclosures" style="margin-top:1rem">
-            <article><div class="idx"><span>01</span><em>Res. 520 · art. 52</em></div><h4>Situação da autorização</h4><p>Protocolo, data e modalidade, com a declaração de que protocolo não é autorização.</p></article>
-            <article><div class="idx"><span>02</span><em>arts. 15 e 27</em></div><h4>Modalidade e atividades</h4><p>Intermediação por conta e ordem, sem custódia de ativos do cliente.</p></article>
-            <article><div class="idx"><span>03</span><em>arts. 64 a 67</em></div><h4>Ativos e redes</h4><p>USDT na rede TRON (TRC-20), com ficha de risco e critérios de seleção.</p></article>
-            <article><div class="idx"><span>04</span><em>arts. 53 e 68</em></div><h4>Cobertura</h4><p>Sem FGC, sem FGCoop e sem seguro sobre ativos virtuais.</p></article>
-            <article><div class="idx"><span>05</span><em>arts. 61 a 63</em></div><h4>Tarifas</h4><p>Tarifa única de intermediação, exibida antes da confirmação e no comprovante.</p></article>
-            <article><div class="idx"><span>06</span><em>Res. 521/2025</em></div><h4>Câmbio e limites</h4><p>Limite por operação e documentos exigidos para pagamento ao exterior.</p></article>
+          <div class="disc">
+            <article><div class="h"><span>01</span><em>art. 52</em></div><h4>Situação da autorização</h4><p>Protocolo, data e modalidade, declarando que protocolo não é autorização.</p></article>
+            <article><div class="h"><span>02</span><em>arts. 15, 27</em></div><h4>Modalidade e atividades</h4><p>Intermediação por conta e ordem, sem custódia de ativos do cliente.</p></article>
+            <article><div class="h"><span>03</span><em>arts. 64–67</em></div><h4>Ativos e redes</h4><p>USDT na rede TRON (TRC-20), com ficha de risco e critérios.</p></article>
+            <article><div class="h"><span>04</span><em>arts. 53, 68</em></div><h4>Cobertura</h4><p>Sem FGC, sem FGCoop e sem seguro sobre ativos virtuais.</p></article>
+            <article><div class="h"><span>05</span><em>arts. 61–63</em></div><h4>Tarifas</h4><p>Tarifa única de intermediação, exibida antes e no comprovante.</p></article>
+            <article><div class="h"><span>06</span><em>Res. 521</em></div><h4>Câmbio e limites</h4><p>Limite por operação e documentos exigidos no pagamento ao exterior.</p></article>
           </div>
         </div>
       </div>
@@ -445,12 +416,12 @@
   </section>
 
   <!-- ============ PERGUNTAS ============ -->
-  <section class="band" id="perguntas" aria-labelledby="h-faq">
+  <section class="band" id="perguntas" aria-labelledby="h2-faq">
     <div class="wrap">
       <div class="head" data-reveal>
         <div>
-          <p class="label">Perguntas frequentes</p>
-          <h2 id="h-faq">Respostas curtas, sem rodeio.</h2>
+          <p class="eyebrow">Perguntas frequentes</p>
+          <h2 id="h2-faq">Respostas curtas, sem rodeio.</h2>
         </div>
         <p class="lede">Se a sua dúvida não estiver aqui, o atendimento é humano e responde em português.</p>
       </div>
@@ -466,11 +437,11 @@
         </details>
         <details>
           <summary>Qual ativo e qual rede vocês usam?</summary>
-          <div class="a">USDT (Tether) na rede TRON, padrão TRC-20. Confirme com o fornecedor que a carteira dele aceita essa rede: endereço ou rede incompatível pode causar perda irreversível do valor.</div>
+          <div class="a">USDT (Tether) na rede TRON, padrão TRC-20. Confirme com o fornecedor que a carteira dele aceita essa rede: endereço ou rede incompatível pode causar perda irreversível.</div>
         </details>
         <details>
           <summary>Existe limite por operação?</summary>
-          <div class="a">Pagamentos e transferências internacionais com ativos virtuais integram o mercado de câmbio. Quando a contraparte no exterior não é instituição autorizada a operar em câmbio, há limite por operação equivalente a US$ 100.000,00, com identificação do beneficiário, finalidade e documento de suporte. Acima disso, o caso é analisado antes do envio.</div>
+          <div class="a">Pagamentos e transferências internacionais com ativos virtuais integram o mercado de câmbio. Quando a contraparte no exterior não é instituição autorizada a operar em câmbio, há limite por operação equivalente a US$ 100.000,00, com identificação do beneficiário, finalidade e documento de suporte.</div>
         </details>
         <details>
           <summary>Posso perder dinheiro?</summary>
@@ -478,11 +449,11 @@
         </details>
         <details>
           <summary>Pessoa física pode usar o serviço?</summary>
-          <div class="a">Sim, maiores de 18 anos com capacidade civil, além de pessoas jurídicas. A habilitação depende de verificação de identidade, origem dos recursos e avaliação de risco. Cadastro não garante aprovação, limite ou prazo de análise.</div>
+          <div class="a">Sim, maiores de 18 anos com capacidade civil, além de pessoas jurídicas. A habilitação depende de verificação de identidade, origem dos recursos e avaliação de risco. Cadastro não garante aprovação.</div>
         </details>
         <details>
           <summary>Quais documentos a empresa precisa enviar?</summary>
-          <div class="a">Para o cadastro (KYB): CNPJ, contrato social, dados dos sócios e verificação de identidade com biometria. Para cada pagamento ao exterior: identificação do beneficiário, finalidade do pagamento e documento de suporte — fatura, pedido ou contrato.</div>
+          <div class="a">No cadastro (KYB): CNPJ, contrato social, dados dos sócios e biometria. Em cada pagamento ao exterior: identificação do beneficiário, finalidade e documento de suporte — fatura, pedido ou contrato.</div>
         </details>
         <details>
           <summary>Vocês pedem senha ou chave privada?</summary>
@@ -493,15 +464,12 @@
   </section>
 
   <!-- ============ CONTATO ============ -->
-  <section class="band" id="contato" aria-labelledby="h-contato">
+  <section class="band" id="contato" aria-labelledby="h2-contato">
     <div class="wrap contact">
       <div data-reveal>
-        <p class="label">Contato</p>
-        <h2 id="h-contato">Um especialista acompanha a primeira operação.</h2>
-        <p class="lede" style="margin-top:.9rem">
-          Conte o volume e para onde você paga. A gente responde com o custo fechado e o que
-          precisa para habilitar a conta.
-        </p>
+        <p class="eyebrow">Contato</p>
+        <h2 id="h2-contato">Um especialista acompanha a primeira operação.</h2>
+        <p class="lede" style="margin-top:1rem">Conte o volume e para onde você paga. Respondemos com o custo fechado e o que falta para habilitar a conta.</p>
 
         <ul class="channels">
           <li><b>WhatsApp</b><span><a href="tel:+551100000000">+55 (11) 0000-0000</a> — [A DEFINIR]</span></li>
@@ -511,23 +479,23 @@
         </ul>
       </div>
 
-      <form class="lead-form" id="leadForm" novalidate aria-describedby="formNote" data-reveal data-reveal-delay="90">
-        <div class="field">
+      <form class="form" id="leadForm" novalidate aria-describedby="formNote" data-reveal data-reveal-delay="90">
+        <div class="f">
           <label for="nome">Nome</label>
           <input id="nome" name="nome" autocomplete="name" required aria-required="true">
         </div>
         <div class="pair">
-          <div class="field">
+          <div class="f">
             <label for="whats">WhatsApp com DDD</label>
             <input id="whats" name="whats" inputmode="tel" autocomplete="tel-national" required aria-required="true" placeholder="(11) 90000-0000">
           </div>
-          <div class="field">
+          <div class="f">
             <label for="email">E-mail corporativo</label>
             <input id="email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="voce@empresa.com.br">
           </div>
         </div>
         <div class="pair">
-          <div class="field">
+          <div class="f">
             <label for="volume">Volume mensal estimado</label>
             <select id="volume" name="volume">
               <option>Até R$ 20 mil</option>
@@ -536,7 +504,7 @@
               <option>Acima de R$ 500 mil</option>
             </select>
           </div>
-          <div class="field">
+          <div class="f">
             <label for="perfil">Perfil</label>
             <select id="perfil" name="perfil">
               <option>Pessoa jurídica</option>
@@ -544,32 +512,27 @@
             </select>
           </div>
         </div>
-        <div class="field">
+        <div class="f">
           <label for="msg">Para onde você paga? (opcional)</label>
           <textarea id="msg" name="msg" rows="3" placeholder="Ex.: fornecedor na China, três pagamentos por mês"></textarea>
         </div>
 
-        <button class="btn btn-solid btn-block" type="submit">Enviar e receber o custo</button>
-        <p class="sent" id="sent" role="status" hidden>
-          Recebido. Este formulário é uma demonstração sem envio de dados — nenhuma informação
-          saiu do seu navegador. Configure o destino (WhatsApp, CRM ou e-mail) antes de publicar.
-        </p>
-        <p class="micro" id="formNote">
-          Ao enviar, você concorda com o tratamento dos dados conforme a LGPD e a
-          <a href="#privacidade">Política de Privacidade</a>. Nunca pedimos senha ou chave privada.
-        </p>
+        <button class="btn btn-primary btn-block" type="submit">Enviar e receber o custo</button>
+        <p class="sent" id="sent" role="status" hidden>Recebido. Este formulário é uma demonstração sem envio de dados — nenhuma informação saiu do seu navegador. Configure o destino (WhatsApp, CRM ou e-mail) antes de publicar.</p>
+        <p class="micro" id="formNote" style="margin-top:.85rem">Ao enviar, você concorda com o tratamento dos dados conforme a LGPD e a <a href="#privacidade">Política de Privacidade</a>. Nunca pedimos senha ou chave privada.</p>
       </form>
     </div>
   </section>
 
-  <!-- ============ CTA FINAL ============ -->
-  <section class="closing" aria-labelledby="h-fechamento">
+  <!-- ============ FECHAMENTO ============ -->
+  <section class="closing" aria-labelledby="h2-close">
     <div class="wrap" style="text-align:center">
-      <h2 id="h-fechamento">Pague o mundo na velocidade do Pix.</h2>
+      <p class="eyebrow" style="justify-content:center">Comece pelo simulador</p>
+      <h2 id="h2-close">Pague o mundo na velocidade do Pix.</h2>
       <p class="lede">Simule o valor, veja o custo antes e confirme só quando fizer sentido.</p>
       <div class="opening-actions" style="justify-content:center">
-        <a class="btn btn-solid" href="#cotacao">Simular meu pagamento</a>
-        <a class="btn btn-outline" href="#contato">Falar com especialista</a>
+        <a class="btn btn-primary" href="#simulador">Simular meu pagamento</a>
+        <a class="btn btn-ghost" href="#contato">Falar com especialista</a>
       </div>
     </div>
   </section>
@@ -580,7 +543,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="about">
-        <a class="wordmark" href="#topo"><span class="mark" aria-hidden="true"></span> RevolutionBank <small>Pix → USDT</small></a>
+        <a class="wordmark" href="#topo"><span class="glyph" aria-hidden="true">R</span> RevolutionBank</a>
         <p>Intermediação de compra de USDT (TRC-20) com pagamento por Pix, para quem paga fornecedores no exterior.</p>
       </div>
       <div>
@@ -588,8 +551,8 @@
         <ul>
           <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#custo">Custo e cotação</a></li>
-          <li><a href="#produto">Painel e comprovantes</a></li>
-          <li><a href="#cotacao">Simulador</a></li>
+          <li><a href="#painel">Painel e comprovantes</a></li>
+          <li><a href="#simulador">Simulador</a></li>
         </ul>
       </div>
       <div>
@@ -614,39 +577,29 @@
 
     <div class="legal" id="privacidade">
       <p><strong>Identificação da instituição:</strong> razão social [A DEFINIR], CNPJ [A DEFINIR], sede em [A DEFINIR]. Situação de autorização: [A DEFINIR] — ver bloco de conformidade. Canais oficiais: este site e [A DEFINIR].</p>
-      <p><strong>Risco:</strong> ativos virtuais podem perder valor, inclusive integralmente, e não contam com cobertura do FGC, do FGCoop ou de seguro. O USDT é um ativo virtual referenciado ao dólar, pode perder a paridade e não é moeda de curso legal nem depósito bancário. Transferências confirmadas em blockchain são irreversíveis: confira rede (TRC-20), endereço e titular antes de enviar.</p>
+      <p><strong>Risco:</strong> ativos virtuais podem perder valor, inclusive integralmente, e não contam com cobertura do FGC, do FGCoop ou de seguro. O USDT é ativo virtual referenciado ao dólar, pode perder a paridade e não é moeda de curso legal nem depósito bancário. Transferências confirmadas em blockchain são irreversíveis: confira rede (TRC-20), endereço e titular antes de enviar.</p>
       <p><strong>Custos:</strong> a tarifa de intermediação ([TAXA A DEFINIR]) é informada antes de cada confirmação, junto com a cotação final e a taxa de rede, e aparece no comprovante. Simulações nesta página usam referência pública de mercado e não representam oferta. Cadastro sujeito a análise; cadastro não garante aprovação.</p>
       <p><strong>Câmbio:</strong> pagamentos e transferências internacionais com ativos virtuais integram o mercado de câmbio e observam limites por operação quando a contraparte no exterior não é instituição autorizada a operar em câmbio, com identificação do beneficiário, finalidade e documento de suporte.</p>
       <p><strong>Atendimento:</strong> SAC [A DEFINIR] · Ouvidoria [A DEFINIR] · Deficiência auditiva ou de fala: 0800 [A DEFINIR].</p>
-      <p style="color:var(--ink-2)"><strong>Este conteúdo não substitui revisão jurídica e de compliance.</strong> Textos regulatórios, taxas e declarações obrigatórias devem ser validados antes da publicação.</p>
-      <div class="sig">
-        <span>© 2026 RevolutionBank</span>
-        <span>Página de demonstração</span>
-        <span>pt-BR · 14/11/2026</span>
-      </div>
+      <p><strong>Este conteúdo não substitui revisão jurídica e de compliance.</strong> Textos regulatórios, taxas e declarações obrigatórias devem ser validados antes da publicação.</p>
+      <div class="sig"><span>© 2026 RevolutionBank</span><span>Página de demonstração</span><span>pt-BR · 14/11/2026</span></div>
     </div>
   </div>
 </footer>
 
-<!-- CTA fixo mobile -->
 <div class="mobile-cta" id="mobileCta">
   <div>
     <b>Simule seu pagamento</b>
-    <small>cotação de referência em 1 tela</small>
+    <small>cotação e custo em uma tela</small>
   </div>
-  <a class="btn btn-brass btn-sm" href="#cotacao">Abrir simulador</a>
+  <a class="btn btn-primary btn-sm" href="#simulador">Abrir</a>
 </div>
 
-<!-- Banner LGPD -->
 <aside class="consent" id="consent" role="region" aria-label="Aviso de cookies" hidden>
-  <p>
-    Usamos cookies essenciais para o site funcionar e, com seu aceite, cookies de medição para
-    entender o uso das páginas. Você pode aceitar ou recusar os não essenciais.
-    <a href="#privacidade">Política de Privacidade</a>.
-  </p>
+  <p>Usamos cookies essenciais para o site funcionar e, com seu aceite, cookies de medição. Você pode aceitar ou recusar os não essenciais. <a href="#privacidade">Política de Privacidade</a>.</p>
   <div class="acts">
-    <button class="btn btn-outline btn-sm" type="button" id="consentNo">Recusar</button>
-    <button class="btn btn-solid btn-sm" type="button" id="consentYes">Aceitar</button>
+    <button class="btn btn-ghost btn-sm" type="button" id="consentNo">Recusar</button>
+    <button class="btn btn-primary btn-sm" type="button" id="consentYes">Aceitar</button>
   </div>
 </aside>
 

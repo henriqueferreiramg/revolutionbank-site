@@ -1,24 +1,23 @@
 /* =============================================================
-   REVOLUTIONBANK — comportamento do site
-   Simulador de cotação, tema, menu, banner LGPD, validação.
-   Sem dependências. Vanilla JS, delegado e à prova de falha.
+   REVOLUTIONBANK — comportamento
+   Simulador de cotação, tema, menu, LGPD, validação, revelação.
+   Vanilla JS. Sem dependências. Falha de forma silenciosa.
    ============================================================= */
 (function () {
   "use strict";
 
   var $ = function (id) { return document.getElementById(id); };
 
-  /* ---------- configuração de negócio (troque aqui só o que for real) ---------- */
+  /* ---------- configuração de negócio ---------- */
   var CFG = {
-    // Tarifa ainda não definida pelo cliente. Use null para exibir "a definir"
-    // no cálculo ao vivo, sem inventar número.
-    feePct: null,
-    feePctLabel: null,          // se o cliente informar 0.008, exibe "0,8%"
-    refUsdBrl: null,            // referência do dólar quando a API não responde
-    usdtOverUsd: 0.004,         // prêmio ilustrativo USDT sobre o dólar (fallback)
+    // Tarifa real: preencha. null → mostra "a definir" e não inventa número.
+    feePct: null,               // ex.: 0.008
+    feeLabel: null,             // ex.: "0,8%"
+    refUsdBrl: null,            // referência do dólar se a API falhar
+    usdtOverUsd: 0.004,         // prêmio ilustrativo USDT/dólar no fallback
     validitySec: 30,
     minBrl: 500,
-    maxBrl: 100000 * 5.45        // ~US$ 100 mil por operação
+    maxBrl: 100000 * 5.45
   };
 
   var state = { mode: "brl", base: 0, live: false, countdown: CFG.validitySec };
@@ -45,24 +44,7 @@
     return n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
-  /* ---------- tema ---------- */
-  function initTheme() {
-    var saved = null;
-    try { saved = localStorage.getItem("revolutionbank-theme"); } catch (e) {}
-    var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.setAttribute("data-theme", saved || (sysDark ? "dark" : "light"));
-
-    var btn = $("themeBtn");
-    if (btn) {
-      btn.addEventListener("click", function () {
-        var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        try { localStorage.setItem("revolutionbank-theme", next); } catch (e) {}
-      });
-    }
-  }
-
-  /* ---------- menu mobile ---------- */
+  /* ---------- menu ---------- */
   function initNav() {
     var btn = $("navBtn"), nav = $("nav");
     if (!btn || !nav) return;
@@ -75,6 +57,30 @@
         nav.classList.remove("open");
         btn.setAttribute("aria-expanded", "false");
       }
+    });
+  }
+
+  /* ---------- compartilhar/copiar link ---------- */
+  function initShare() {
+    var btn = $("shareBtn");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var url = window.location.href;
+      var flash = function () {
+        var old = btn.getAttribute("aria-label");
+        btn.setAttribute("aria-label", "Link copiado");
+        btn.style.color = "var(--mint)";
+        setTimeout(function () {
+          btn.setAttribute("aria-label", old);
+          btn.style.color = "";
+        }, 1600);
+      };
+      if (navigator.share) { navigator.share({ title: document.title, url: url }).catch(function () {}); return; }
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(flash, flash); return; }
+      var t = document.createElement("textarea");
+      t.value = url; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); flash(); } catch (e) {}
+      document.body.removeChild(t);
     });
   }
 
@@ -96,9 +102,11 @@
     }
 
     $("rBase").textContent = state.base > 0 ? rate(state.base) : "—";
-    $("rFee").textContent = CFG.feePctLabel || "a definir";
+    $("rFee").textContent = CFG.feeLabel || "a definir";
     $("rFinal").textContent = finalRate > 0 ? rate(finalRate) : "—";
     $("rNet").textContent = "incluída";
+    var hint = $("feeHint");
+    if (hint) hint.textContent = CFG.feeLabel ? "tarifa " + CFG.feeLabel : "tarifa a definir";
 
     if (state.mode === "brl") {
       $("outLabel").textContent = "Fornecedor recebe";
@@ -108,21 +116,17 @@
       $("outValue").textContent = brlAmount > 0 ? brl(brlAmount) : "—";
     }
 
-    var notice = $("limitNotice");
-    var go = $("simGo");
+    var notice = $("limitNotice"), go = $("simGo");
     var warn = "";
-    if (brlAmount > 0 && brlAmount < CFG.minBrl) {
-      warn = "Valor mínimo de " + brl(CFG.minBrl) + " por operação.";
-    } else if (brlAmount > CFG.maxBrl) {
-      warn = "Acima do limite por operação (≈ US$ 100 mil). Fale com um especialista para analisar o caso.";
+    if (brlAmount > 0 && brlAmount < CFG.minBrl) warn = "Valor mínimo de " + brl(CFG.minBrl) + " por operação.";
+    else if (brlAmount > CFG.maxBrl) warn = "Acima do limite por operação (≈ US$ 100 mil). Fale com um especialista para analisar o caso.";
+
+    if (notice) {
+      if (warn) { notice.textContent = warn; notice.hidden = false; } else { notice.hidden = true; }
     }
-    if (warn) {
-      notice.textContent = warn;
-      notice.hidden = false;
-      if (go) go.setAttribute("disabled", "disabled");
-    } else {
-      notice.hidden = true;
-      if (go) go.removeAttribute("disabled");
+    if (go) {
+      if (warn) go.setAttribute("disabled", "disabled");
+      else go.removeAttribute("disabled");
     }
   }
 
@@ -132,7 +136,8 @@
     var tag = $("liveTag");
     if (tag) {
       tag.classList.toggle("offline", !live);
-      tag.querySelector("span").textContent = live ? "referência de mercado" : "referência indisponível";
+      var label = tag.querySelector("span");
+      if (label) label.textContent = live ? "mercado" : "indisponível";
     }
     compute();
   }
@@ -141,8 +146,6 @@
     var fallback = (CFG.refUsdBrl || 5.45) * (1 + CFG.usdtOverUsd);
     var done = false;
     function finish(v, live) { if (done) return; done = true; setBase(v, live); }
-
-    // Trava de segurança: nunca deixa o painel sem número.
     setTimeout(function () { finish(fallback, false); }, 4000);
 
     try {
@@ -150,13 +153,10 @@
         .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
         .then(function (j) {
           var v = j && j.tether && j.tether.brl;
-          if (v && v > 1) finish(v, true);
-          else throw new Error("sem preço");
+          if (v && v > 1) finish(v, true); else throw new Error("sem preço");
         })
         .catch(function () { finish(fallback, false); });
-    } catch (e) {
-      finish(fallback, false);
-    }
+    } catch (e) { finish(fallback, false); }
   }
 
   function tick() {
@@ -166,10 +166,7 @@
     if (t) t.textContent = state.countdown + "s";
     if (bar) bar.style.width = (state.countdown / CFG.validitySec * 100) + "%";
     var st = $("stamp");
-    if (st) {
-      var d = new Date();
-      st.textContent = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
-    }
+    if (st) st.textContent = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
   }
 
   function initSim() {
@@ -195,16 +192,13 @@
         $("valorLabel").textContent = isBrl ? "Você envia, em reais" : "O fornecedor precisa receber";
         el.value = isBrl ? "50.000,00" : "10.000,00";
         document.querySelectorAll(".presets button").forEach(function (b) {
-          var v = parseInt(b.dataset.base || b.dataset.v, 10);
-          if (!b.dataset.base) b.dataset.base = v;
-          b.textContent = isBrl
-            ? "R$ " + (v / 1000) + " mil"
-            : (v === 5000 ? "1 mil" : Math.round(v / 5) + " mil") + " USDT";
-          b.dataset.v = isBrl ? v : Math.round(v / 5.45);
+          var base = parseInt(b.dataset.base || b.dataset.v, 10);
+          if (!b.dataset.base) b.dataset.base = base;
+          if (isBrl) { b.dataset.v = base; b.textContent = (base / 1000) + " mil"; }
+          else { b.dataset.v = Math.round(base / 5.45); b.textContent = (base / 5000) + " mil"; }
         });
         compute();
       });
-      // navegação por setas entre as abas (padrão ARIA)
       tab.addEventListener("keydown", function (e) {
         var i = tabs.indexOf(tab), n = null;
         if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
@@ -237,8 +231,7 @@
       });
     }
 
-    var fallbackFirst = (CFG.refUsdBrl || 5.45) * (1 + CFG.usdtOverUsd);
-    setBase(fallbackFirst, false);   // primeira pintura sempre com número
+    setBase((CFG.refUsdBrl || 5.45) * (1 + CFG.usdtOverUsd), false);
     loadRate();
     setInterval(tick, 1000);
     setInterval(loadRate, 60000);
@@ -249,25 +242,21 @@
   function initForm() {
     var form = $("leadForm");
     if (!form) return;
-
     var rules = {
       nome: function (v) { return v.trim().length >= 2; },
       whats: function (v) { return v.replace(/\D/g, "").length >= 10; },
       email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
     };
-
-    function validate(field) {
-      var ok = rules[field.id] ? rules[field.id](field.value) : true;
-      field.classList.toggle("err", !ok);
-      field.setAttribute("aria-invalid", ok ? "false" : "true");
+    function validate(f) {
+      var ok = rules[f.id] ? rules[f.id](f.value) : true;
+      f.classList.toggle("err", !ok);
+      f.setAttribute("aria-invalid", ok ? "false" : "true");
       return ok;
     }
-
     Object.keys(rules).forEach(function (id) {
       var f = $(id);
       if (f) f.addEventListener("blur", function () { validate(f); });
     });
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = true, first = null;
@@ -277,8 +266,6 @@
         if (!validate(f)) { ok = false; if (!first) first = f; }
       });
       if (!ok) { if (first) first.focus(); return; }
-
-      // Demonstração: nada é enviado. Ligue aqui seu endpoint, WhatsApp ou CRM.
       var sent = $("sent");
       if (sent) sent.hidden = false;
       var btn = form.querySelector('button[type="submit"]');
@@ -286,109 +273,67 @@
     });
   }
 
-  /* ---------- banner LGPD ---------- */
+  /* ---------- LGPD ---------- */
   function initConsent() {
     var box = $("consent");
     if (!box) return;
-    var choice = null;
-    try { choice = localStorage.getItem("revolutionbank-consent"); } catch (e) {}
-    if (choice) return;                       // já decidiu: não incomoda de novo
+    var saved = null;
+    try { saved = localStorage.getItem("revolutionbank-consent"); } catch (e) {}
+    if (saved) return;
     box.hidden = false;
-
     function choose(v) {
       try { localStorage.setItem("revolutionbank-consent", v); } catch (e) {}
       box.hidden = true;
     }
-    var yes = $("consentYes"), no = $("consentNo");
-    if (yes) yes.addEventListener("click", function () { choose("all"); });
-    if (no) no.addEventListener("click", function () { choose("essential"); });
+    var y = $("consentYes"), n = $("consentNo");
+    if (y) y.addEventListener("click", function () { choose("all"); });
+    if (n) n.addEventListener("click", function () { choose("essential"); });
   }
 
-
-  /* ---------- copiar link / compartilhar ---------- */
-  function initShare() {
-    var btn = $("shareBtn"), label = $("shareLabel");
-    if (!btn) return;
-    btn.addEventListener("click", function () {
-      var url = window.location.href;
-      var done = function () {
-        if (!label) return;
-        var old = label.textContent;
-        label.textContent = "copiado";
-        setTimeout(function () { label.textContent = old; }, 1800);
-      };
-      if (navigator.share) {
-        navigator.share({ title: document.title, url: url }).catch(function () {});
-        return;
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(done, done);
-      } else {
-        // fallback para navegadores antigos ou contexto não seguro
-        var t = document.createElement("textarea");
-        t.value = url; document.body.appendChild(t); t.select();
-        try { document.execCommand("copy"); done(); } catch (e) {}
-        document.body.removeChild(t);
-      }
-    });
-  }
-
-  /* ---------- CTA fixo mobile (aparece após rolar a abertura) ---------- */
+  /* ---------- CTA fixo mobile ---------- */
   function initMobileCta() {
     var cta = $("mobileCta");
     if (!cta) return;
     var hero = document.querySelector(".opening");
-    if (!hero || !("IntersectionObserver" in window)) { cta.hidden = false; cta.classList.add("show"); return; }
+    if (!hero || !("IntersectionObserver" in window)) { cta.classList.add("show"); return; }
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var visible = !en.isIntersecting;
-        cta.hidden = false;
-        cta.classList.toggle("show", visible);
-      });
-    }, { threshold: 0.12 });
+      entries.forEach(function (en) { cta.classList.toggle("show", !en.isIntersecting); });
+    }, { threshold: 0.1 });
     io.observe(hero);
   }
 
-
-  /* ---------- revelação ao rolar: discreta, respeita movimento reduzido ---------- */
+  /* ---------- revelação ao rolar ---------- */
   function initReveal() {
     var els = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
     if (!els.length) return;
-
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || !("IntersectionObserver" in window)) {
-      els.forEach(function (el) { el.classList.add("is-in"); });
+      els.forEach(function (el) { el.classList.add("in"); });
       return;
     }
-
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         var el = en.target;
         var delay = parseInt(el.getAttribute("data-reveal-delay") || "0", 10);
-        setTimeout(function () { el.classList.add("is-in"); }, delay);
+        setTimeout(function () { el.classList.add("in"); }, delay);
         io.unobserve(el);
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.08 });
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- init ---------- */
+  /* ---------- boot ---------- */
   function boot() {
-    initTheme();
     initNav();
+    initShare();
     initSim();
     initForm();
     initConsent();
-    initShare();
     initMobileCta();
     initReveal();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
 })();
